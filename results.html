@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Network Simulation Results</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #343a40;
+            text-align: center;
+        }
+        h1 {
+            font-size: 36px;
+            margin-bottom: 30px;
+        }
+        h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #495057;
+        }
+        .table th, .table td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #dee2e6;
+        }
+        .table thead {
+            background-color: #f1f1f1;
+            font-weight: bold;
+        }
+        .table-striped tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 14px;
+            color: #6c757d;
+        }
+        .footer a {
+            color: #5cb85c;
+            text-decoration: none;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header h2 {
+            margin: 0;
+            font-size: 30px;
+            color: #17a2b8;
+        }
+        .header p {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #495057;
+        }
+        .btn-custom {
+            background-color: #28a745;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 18px;
+            margin: 20px auto;
+            display: block;
+        }
+        .btn-custom:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>🚀 Network Simulation Results Report</h2>
+            <p>Here is a summary of the results from the network protocol simulation. This report provides a detailed breakdown of the performance metrics across different protocols.</p>
+        </div>
+
+        <section>
+            <h2>Summary of Results</h2>
+            <p>The simulation was conducted across various network protocols. The following table provides a detailed overview of each protocol's performance, including the number of packets sent, received, lost, retransmitted, and the associated success rate.</p>
+        </section>
+
+        <section class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Protocol</th>
+                        <th>Sent</th>
+                        <th>Received</th>
+                        <th>Lost</th>
+                        <th>Tampered</th>
+                        <th>Retransmitted</th>
+                        <th>Retransmission Time (s)</th>
+                        <th>Success Rate (%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in results %}
+                    <tr>
+                        <td>{{ row[0] }}</td>
+                        <td>{{ row[1] }}</td>
+                        <td>{{ row[2] }}</td>
+                        <td>{{ row[3] }}</td>
+                        <td>{{ row[4] }}</td>
+                        <td>{{ row[5] }}</td>
+                        <td>{{ row[6]|round(3) }}</td>
+                        <td>{{ row[7]|round(2) }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2>Key Insights</h2>
+            <ul>
+                <li><strong>Retransmission Time:</strong> Protocols with lower retransmission times have performed better in terms of latency.</li>
+                <li><strong>Success Rate:</strong> The success rate varies depending on the protocol, with some protocols achieving a near-perfect rate.</li>
+                <li><strong>Packet Loss:</strong> Packet loss was recorded across various protocols, indicating potential areas of improvement in network stability.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Conclusions</h2>
+            <p>Based on the results, it is evident that protocols such as TCP have higher reliability but may incur additional overhead. Meanwhile, protocols like UDP may offer faster transmission but at the cost of higher packet loss.</p>
+        </section>
+
+        <a href="/download_report" class="btn btn-custom">📥 Download PDF Report</a>
+
+        <div class="footer">
+            <p>&copy; 2025 Network Simulation Project</p>
+        </div>
+    </div>
+</body>
+</html>
